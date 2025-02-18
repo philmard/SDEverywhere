@@ -72,6 +72,18 @@ function graphSpecFromCsv(g: CsvRow, context: ConfigContext): GraphSpec | undefi
   const description = optionalString(g['description'])
   const kindString = optionalString(g['kind'])
 
+  // FELIX ADDITIONS FOR ORGANIZING GRAPHS:
+  // (?) type of graph (?)
+  const graphType = optionalString(g['graph type']) || ''
+  // Category of graph eg. "Food", "Climate", "Land Use" etc.
+  const graphCategory = requiredString('graph category')
+  // the main graphs of each graph category, on initialization
+  const mainGraphs = optionalString(g['maingraphs']) || ''
+  // classification
+  const classification = optionalString(g['classification']) || ''
+  // levels
+  const levels = optionalString(g['levels']) || ''
+
   // Skip rows that have an empty `parent menu` value; this can be used to omit graphs
   // from the product until they've been fully reviewed and approved
   if (!parentMenu) {
@@ -268,7 +280,12 @@ function graphSpecFromCsv(g: CsvRow, context: ConfigContext): GraphSpec | undefi
     yAxisLabelKey,
     yFormat,
     datasets,
-    legendItems
+    legendItems,
+    graphCategory,
+    graphType,
+    mainGraphs,
+    classification,
+    levels
   }
 
   // Add the graph to the menu

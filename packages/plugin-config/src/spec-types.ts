@@ -62,8 +62,15 @@ export interface SliderSpec {
   readonly rangeDividers: ReadonlyArray<number>
   /** The string used to format the slider value. */
   readonly format?: FormatString
-  /** TEST FELIX ADDITION: The "view level" column (Primary, Secondary, etc) */
+  /** FELIX ADDITIONS */
+  /** The "view level" column (Primary, Secondary, etc) */
   readonly viewLevel?: string
+  /** The "categoryid" column */
+  readonly categoryId: string
+  /** The "input group" column */
+  readonly inputGroup?: string
+  /** The "dropdown" column */
+  readonly dropdown?: string
 }
 
 /** Describes an on/off switch that controls an input variable. */
@@ -94,6 +101,15 @@ export interface SwitchSpec {
   readonly slidersActiveWhenOff: ReadonlyArray<InputId>
   /** The set of sliders that will be active/enabled when this switch is "on". */
   readonly slidersActiveWhenOn: ReadonlyArray<InputId>
+  /** FELIX ADDITIONS */
+  /** The "view level" column (Primary, Secondary, etc) */
+  readonly viewLevel?: string
+  /** The "categoryid" column */
+  readonly categoryId: string
+  /** The "input group" column */
+  readonly inputGroup?: string
+  /** The "dropdown" column */
+  readonly dropdown?: string
 }
 
 /** An input is either a slider or a switch (with associated sliders). */
@@ -201,4 +217,16 @@ export interface GraphSpec {
   readonly datasets: ReadonlyArray<GraphDatasetSpec>
   /** The items to display in the legend for this graph. */
   readonly legendItems: ReadonlyArray<GraphLegendItemSpec>
+  /** FELIX ADDITIONS: */
+  /** TODO: use StringKey where possible */
+  /** "graph category" column */
+  readonly graphCategory: string
+  /** "graph type" column */
+  readonly graphType?: string
+  /** "maingraphs" column */
+  readonly mainGraphs?: string
+  /** "classification" column */
+  readonly classification?: string
+  /** "levels" column */
+  readonly levels?: string
 }

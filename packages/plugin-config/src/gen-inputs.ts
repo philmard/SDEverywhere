@@ -54,9 +54,6 @@ function inputSpecFromCsv(r: CsvRow, context: ConfigContext): InputSpec | undefi
   const label = optionalString(r['label']) || ''
   const inputType = requiredString('input type')
 
-  // FELIX TEST ADDITION:
-  const viewLevel = optionalString(r['view level']) || ''
-
   // Skip rows that have an empty `viewid` value; this can be used to omit inputs
   // from the product until they've been fully reviewed and approved
   if (!viewId) {
@@ -66,6 +63,15 @@ function inputSpecFromCsv(r: CsvRow, context: ConfigContext): InputSpec | undefi
 
   // Extract optional fields
   const description = optionalString(r['description'])
+
+  // FELIX ADDITIONS FOR ORGANIZING INPUTS:
+  const viewLevel = optionalString(r['view level']) || ''
+  // Category of input eg. "Diet Change", "Food Waste", etc.
+  const categoryId = requiredString('categoryid')
+  // input group
+  const inputGroup = optionalString(r['input group']) || ''
+  // dropdown
+  const dropdown = optionalString(r['dropdown']) || ''
 
   // Helper that creates a string key prefix
   const key = (kind: string) => `input_${inputId.padStart(3, '0')}_${kind}`
@@ -162,7 +168,10 @@ function inputSpecFromCsv(r: CsvRow, context: ConfigContext): InputSpec | undefi
       rangeLabelKeys,
       rangeDividers,
       format,
-      viewLevel
+      viewLevel,
+      categoryId,
+      inputGroup,
+      dropdown
     }
   }
 
@@ -211,7 +220,11 @@ function inputSpecFromCsv(r: CsvRow, context: ConfigContext): InputSpec | undefi
       offValue,
       onValue,
       slidersActiveWhenOff: rowsActiveWhenOff,
-      slidersActiveWhenOn: rowsActiveWhenOn
+      slidersActiveWhenOn: rowsActiveWhenOn,
+      viewLevel,
+      categoryId,
+      inputGroup,
+      dropdown
     }
   }
 
