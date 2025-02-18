@@ -54,6 +54,9 @@ function inputSpecFromCsv(r: CsvRow, context: ConfigContext): InputSpec | undefi
   const label = optionalString(r['label']) || ''
   const inputType = requiredString('input type')
 
+  // FELIX TEST ADDITION:
+  const viewLevel = optionalString(r['view level']) || ''
+
   // Skip rows that have an empty `viewid` value; this can be used to omit inputs
   // from the product until they've been fully reviewed and approved
   if (!viewId) {
@@ -158,7 +161,8 @@ function inputSpecFromCsv(r: CsvRow, context: ConfigContext): InputSpec | undefi
       unitsKey,
       rangeLabelKeys,
       rangeDividers,
-      format
+      format,
+      viewLevel
     }
   }
 
