@@ -1,6 +1,6 @@
 {
-  "name": "@sdeverywhere/plugin-config",
-  "version": "0.2.7",
+  "name": "@fmard/felix-plugin-config",
+  "version": "0.1.1",
   "files": [
     "dist/**",
     "template-config/**"
@@ -56,10 +56,10 @@
   "homepage": "https://sdeverywhere.org",
   "repository": {
     "type": "git",
-    "url": "https://github.com/climateinteractive/SDEverywhere.git",
+    "url": "https://github.com/philmard/SDEverywhere.git",
     "directory": "packages/plugin-config"
   },
   "bugs": {
-    "url": "https://github.com/climateinteractive/SDEverywhere/issues"
+    "url": "https://github.com/philmard/SDEverywhere/issues"
   }
 }

@@ -1,4 +1,2 @@
-# include /dist folder for now.
-# TODO: publish to npm
-# dist
+dist
 docs/entry.md
